@@ -26,6 +26,8 @@
     li { margin-bottom: 6px; }
     .highlight { background: #E3F2FD; border-left: 4px solid var(--primary);
                  padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 16px 0; }
+    .warning { background: #FFF3E0; border-left: 4px solid #E65100;
+               padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 16px 0; }
     .updated { color: var(--muted); font-size: 0.85rem; margin-top: 40px; }
     a { color: var(--primary); }
     footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid #ddd;
@@ -40,71 +42,132 @@
   </header>
 
   <div class="lang-toggle">
-    <button class="lang-btn active" onclick="setLang('pl')">🇵🇱 Polski</button>
-    <button class="lang-btn" onclick="setLang('en')">🇬🇧 English</button>
+    <button class="lang-btn active" onclick="setLang('pl', this)">🇵🇱 Polski</button>
+    <button class="lang-btn" onclick="setLang('en', this)">🇬🇧 English</button>
   </div>
 
   <!-- ═══════════════════════════ POLSKI ═══════════════════════════ -->
   <section id="pl" class="active">
     <div class="highlight">
       <strong>Krótko mówiąc:</strong> mNotes nie zbiera żadnych Twoich danych osobowych.
-      Wszystkie notatki i przypomnienia są przechowywane wyłącznie na Twoim urządzeniu.
+      Wszystkie notatki, listy, treningi i ustawienia są przechowywane wyłącznie lokalnie
+      na Twoim urządzeniu. Jedyne dane wysyłane poza urządzenie to anonimowe raporty
+      o błędach (Firebase Crashlytics) oraz dane reklamowe (Google AdMob).
     </div>
 
     <h2>1. Informacje ogólne</h2>
     <p>Niniejsza Polityka Prywatności dotyczy aplikacji mobilnej <strong>mNotes</strong>
-    (dalej: „Aplikacja") dostępnej na platformie Android w sklepie Google Play.</p>
+    (dalej: „Aplikacja") dostępnej na platformach Android (Google Play) i iOS (App Store).</p>
     <p>Deweloper: Łukasz Bartos<br>
-    Kontakt: b_lukasz.1994@wp.pl</p>
+    Kontakt: <a href="mailto:b_lukasz.1994@wp.pl">b_lukasz.1994@wp.pl</a></p>
 
     <h2>2. Dane przechowywane lokalnie</h2>
     <p>Aplikacja przechowuje na Twoim urządzeniu wyłącznie:</p>
     <ul>
-      <li>Treść notatek (tytuł, tekst, kategoria)</li>
-      <li>Ustawienia przypomnień (data, godzina, cykl)</li>
-      <li>Preferencje interfejsu (wybrany motyw, język)</li>
+      <li>Treść notatek (tytuł, tekst, checklisty, listy zakupów, daty urodzin/imienin, listy TODO)</li>
+      <li>Dane treningowe (szablony ćwiczeń, sesje treningowe, statystyki)</li>
+      <li>Ustawienia przypomnień (data, godzina, cykl, roczne daty)</li>
+      <li>Preferencje interfejsu (motyw, język, układ widoku)</li>
+      <li>Zaszyfrowane dane z sekcji „Sekrety" (patrz sekcja 5)</li>
     </ul>
-    <p>Dane te <strong>nie są wysyłane na żadne serwery zewnętrzne</strong> przez dewelopera
-    i są dostępne wyłącznie dla Ciebie na danym urządzeniu.</p>
+    <p>Żadne z powyższych danych <strong>nie są wysyłane na serwery dewelopera</strong>
+    ani nie są udostępniane osobom trzecim przez dewelopera.</p>
 
     <h2>3. Uprawnienia aplikacji</h2>
     <ul>
       <li><strong>Mikrofon</strong> — używany wyłącznie do dyktowania treści notatek głosem
-        na Twoje wyraźne żądanie (kliknięcie ikony mikrofonu). Audio nie jest nagrywane
-        ani przechowywane przez aplikację.</li>
+        na Twoje wyraźne żądanie. Audio nie jest nagrywane ani przechowywane przez aplikację.</li>
+      <li><strong>Rozpoznawanie mowy</strong> (iOS) — wymagane do zamiany głosu na tekst.
+        Przetwarzanie odbywa się przez systemowy silnik Apple; deweloper nie ma dostępu
+        do nagrań ani wyników.</li>
       <li><strong>Powiadomienia</strong> — wymagane do wysyłania lokalnych przypomnień
-        o notatkach. Powiadomienia są generowane wyłącznie przez Twoje urządzenie,
-        bez komunikacji z serwerem.</li>
-      <li><strong>Internet</strong> — wymagany wyłącznie do wyświetlania reklam Google AdMob.
-        Deweloper nie ma dostępu do przesyłanych danych reklamowych.</li>
-      <li><strong>Uruchamianie przy starcie</strong> — umożliwia przeplanowanie przypomnień
-        po restarcie urządzenia.</li>
+        o notatkach, urodzinach i świętach. Powiadomienia są generowane wyłącznie przez
+        Twoje urządzenie, bez komunikacji z serwerem.</li>
+      <li><strong>Internet</strong> — wymagany do wyświetlania reklam Google AdMob,
+        wysyłania anonimowych raportów o błędach (Crashlytics) oraz pobierania danych
+        o świętach państwowych. Deweloper nie ma dostępu do przesyłanych danych reklamowych.</li>
+      <li><strong>Uruchamianie przy starcie systemu</strong> (Android) — umożliwia
+        przeplanowanie przypomnień po restarcie urządzenia.</li>
+      <li><strong>Biometria / Face ID / Touch ID</strong> — używana wyłącznie do
+        uwierzytelnienia dostępu do sekcji „Sekrety". Aplikacja korzysta wyłącznie
+        z systemowego API biometrycznego (Android BiometricPrompt / Apple LocalAuthentication).
+        Dane biometryczne <strong>nigdy nie są przez aplikację przechowywane ani
+        przetwarzane</strong>.</li>
     </ul>
 
     <h2>4. Reklamy – Google AdMob</h2>
     <p>Aplikacja wyświetla reklamy dostarczane przez <strong>Google AdMob</strong>.
     Google może zbierać i przetwarzać dane zgodnie z własną polityką prywatności,
     w tym identyfikatory reklamowe urządzenia, w celu wyświetlania spersonalizowanych reklam.</p>
+    <p><strong>iOS — App Tracking Transparency (ATT):</strong> Na urządzeniach z systemem iOS 14.5
+    lub nowszym aplikacja poprosi o zgodę na śledzenie aktywności reklamowej przed
+    wyświetleniem reklam. Możesz odmówić — aplikacja będzie działać normalnie,
+    wyświetlane będą jedynie reklamy niespersonalizowane.</p>
     <p>Więcej informacji: <a href="https://policies.google.com/privacy" target="_blank">
     Polityka Prywatności Google</a></p>
-    <p>Możesz zrezygnować ze spersonalizowanych reklam w ustawieniach urządzenia:<br>
-    <em>Ustawienia → Google → Reklamy → Rezygnacja z personalizacji reklam</em></p>
+    <p>Możesz zrezygnować ze spersonalizowanych reklam:<br>
+    <em>Android: Ustawienia → Google → Reklamy → Rezygnacja z personalizacji</em><br>
+    <em>iOS: Ustawienia → Prywatność → Reklamy Apple → Ogranicz śledzenie reklam</em></p>
 
-    <h2>5. Usługi rozpoznawania mowy</h2>
-    <p>Funkcja dyktowania głosowego korzysta z wbudowanego silnika rozpoznawania mowy
-    systemu Android (Google Speech Recognition). Przetwarzanie mowy odbywa się zgodnie
-    z polityką prywatności Google. Deweloper nie ma dostępu do nagrań ani wyników
-    rozpoznawania mowy.</p>
+    <h2>5. Sekcja „Sekrety" — szyfrowanie lokalne</h2>
+    <div class="warning">
+      <strong>Ważne:</strong> Dane w sekcji „Sekrety" są szyfrowane wyłącznie lokalnie.
+      Deweloper nie ma do nich dostępu i nie jest w stanie ich odzyskać w przypadku
+      utraty PINu.
+    </div>
+    <ul>
+      <li>Hasła, dane logowania i prywatne notatki w sekcji „Sekrety" są szyfrowane
+        algorytmem <strong>AES-256</strong> bezpośrednio na urządzeniu.</li>
+      <li>Klucz szyfrowania jest wyprowadzany z PINu użytkownika metodą PBKDF2-HMAC-SHA256
+        — nie jest nigdzie przesyłany ani przechowywany w formie jawnej.</li>
+      <li>Zaszyfrowane dane są przechowywane w lokalnej bazie danych Hive lub
+        systemowym magazynie kluczy (Android Keystore / iOS Keychain).</li>
+      <li>Dane z sekcji „Sekrety" <strong>nigdy nie opuszczają urządzenia</strong>.</li>
+      <li>Utrata PINu oznacza trwałą, nieodwracalną utratę dostępu do zaszyfrowanych danych.</li>
+    </ul>
 
-    <h2>6. Dzieci</h2>
+    <h2>6. Firebase Crashlytics — raporty o błędach</h2>
+    <p>Aplikacja korzysta z usługi <strong>Google Firebase Crashlytics</strong>
+    w celu automatycznego wykrywania i raportowania błędów technicznych.</p>
+    <p>W przypadku awarii aplikacji wysyłane są:</p>
+    <ul>
+      <li>Anonimowy stack trace (ścieżka błędu w kodzie)</li>
+      <li>Model urządzenia i wersja systemu operacyjnego</li>
+      <li>Wersja aplikacji</li>
+    </ul>
+    <p><strong>Nie są wysyłane:</strong> treść notatek, hasła, dane z sekcji „Sekrety",
+    dane osobowe, imiona ani żadne informacje identyfikujące użytkownika.</p>
+    <p>Zbieranie raportów o błędach jest <strong>automatycznie wyłączone</strong>
+    po włączeniu trybu dewelopera w aplikacji (Ustawienia → wielokrotne tapnięcie numeru wersji).</p>
+    <p>Dane trafiają do Google i podlegają
+    <a href="https://firebase.google.com/support/privacy" target="_blank">
+    Polityce Prywatności Firebase</a>.</p>
+
+    <h2>7. Usługi rozpoznawania i syntezy mowy</h2>
+    <p>Funkcja dyktowania głosowego korzysta z systemowego silnika rozpoznawania mowy
+    (Android: Google Speech Recognition; iOS: Apple Speech Recognition).
+    Przetwarzanie mowy odbywa się zgodnie z polityką prywatności odpowiedniego dostawcy.
+    Deweloper nie ma dostępu do nagrań ani wyników rozpoznawania mowy.</p>
+    <p>Funkcja odczytu notatek głosem (Text-to-Speech) korzysta z systemowego silnika TTS
+    urządzenia. Treść notatek nie jest wysyłana poza urządzenie w celu syntezy mowy.</p>
+
+    <h2>8. Pobieranie danych o świętach</h2>
+    <p>Opcjonalna funkcja powiadomień o świętach państwowych pobiera dane z publicznego
+    API <strong>Nager.Date</strong> (<a href="https://date.nager.at" target="_blank">date.nager.at</a>).
+    Zapytanie zawiera jedynie wybrany kod kraju i rok. Żadne dane osobowe nie są
+    przesyłane. W przypadku braku dostępu do internetu aplikacja korzysta z wbudowanej
+    listy polskich świąt.</p>
+
+    <h2>9. Dzieci</h2>
     <p>Aplikacja nie jest skierowana do dzieci poniżej 13. roku życia i świadomie
     nie zbiera danych od takich użytkowników.</p>
 
-    <h2>7. Zmiany w polityce prywatności</h2>
+    <h2>10. Zmiany w polityce prywatności</h2>
     <p>Wszelkie zmiany zostaną opublikowane na tej stronie. Data ostatniej aktualizacji
-    jest podana poniżej.</p>
+    jest podana poniżej. Kontynuowanie korzystania z aplikacji po wprowadzeniu zmian
+    oznacza ich akceptację.</p>
 
-    <h2>8. Kontakt</h2>
+    <h2>11. Kontakt</h2>
     <p>W razie pytań dotyczących prywatności: <a href="mailto:b_lukasz.1994@wp.pl">b_lukasz.1994@wp.pl</a></p>
 
     <p class="updated">Ostatnia aktualizacja: maj 2026</p>
@@ -114,61 +177,122 @@
   <section id="en">
     <div class="highlight">
       <strong>In short:</strong> mNotes does not collect any of your personal data.
-      All notes and reminders are stored exclusively on your device.
+      All notes, lists, workouts and settings are stored exclusively on your device.
+      The only data sent outside the device is anonymous crash reports (Firebase Crashlytics)
+      and advertising data (Google AdMob).
     </div>
 
     <h2>1. General Information</h2>
     <p>This Privacy Policy applies to the <strong>mNotes</strong> mobile application
-    (hereinafter: "the App") available on Android via Google Play.</p>
+    (hereinafter: "the App") available on Android (Google Play) and iOS (App Store).</p>
     <p>Developer: Łukasz Bartos<br>
-    Contact: b_lukasz.1994@wp.pl</p>
+    Contact: <a href="mailto:b_lukasz.1994@wp.pl">b_lukasz.1994@wp.pl</a></p>
 
     <h2>2. Data Stored Locally</h2>
     <p>The App stores only the following data on your device:</p>
     <ul>
-      <li>Note contents (title, text, category)</li>
-      <li>Reminder settings (date, time, recurrence)</li>
-      <li>UI preferences (selected theme, language)</li>
+      <li>Note contents (title, text, checklists, shopping lists, birthday/name day entries, numbered TODO lists)</li>
+      <li>Workout data (exercise templates, training sessions, statistics)</li>
+      <li>Reminder settings (date, time, recurrence, annual dates)</li>
+      <li>UI preferences (theme, language, view layout)</li>
+      <li>Encrypted data from the "Secrets" section (see section 5)</li>
     </ul>
-    <p>This data is <strong>not sent to any external servers</strong> by the developer
-    and is accessible only to you on the given device.</p>
+    <p>None of the above data is <strong>sent to the developer's servers</strong>
+    or shared with third parties by the developer.</p>
 
     <h2>3. App Permissions</h2>
     <ul>
       <li><strong>Microphone</strong> — used solely for voice dictation of note content
-        at your explicit request (tapping the microphone icon). Audio is not recorded
-        or stored by the App.</li>
-      <li><strong>Notifications</strong> — required to send local note reminders.
-        Notifications are generated entirely by your device, with no server communication.</li>
-      <li><strong>Internet</strong> — required solely to display Google AdMob advertisements.
-        The developer has no access to advertising data transmitted.</li>
-      <li><strong>Boot receiver</strong> — allows reminders to be rescheduled after
-        a device restart.</li>
+        at your explicit request. Audio is not recorded or stored by the App.</li>
+      <li><strong>Speech Recognition</strong> (iOS) — required for voice-to-text conversion.
+        Processing is handled by Apple's system engine; the developer has no access to
+        recordings or recognition results.</li>
+      <li><strong>Notifications</strong> — required to send local reminders for notes,
+        birthdays and public holidays. Notifications are generated entirely by your device,
+        with no server communication.</li>
+      <li><strong>Internet</strong> — required to display Google AdMob ads, send anonymous
+        crash reports (Crashlytics), and fetch public holiday data. The developer has no
+        access to advertising data transmitted.</li>
+      <li><strong>Boot receiver</strong> (Android) — allows reminders to be rescheduled
+        after a device restart.</li>
+      <li><strong>Biometrics / Face ID / Touch ID</strong> — used solely to authenticate
+        access to the "Secrets" section. The App uses only the system biometric API
+        (Android BiometricPrompt / Apple LocalAuthentication).
+        Biometric data is <strong>never stored or processed by the App</strong>.</li>
     </ul>
 
     <h2>4. Advertising – Google AdMob</h2>
     <p>The App displays ads served by <strong>Google AdMob</strong>.
     Google may collect and process data in accordance with its own privacy policy,
     including device advertising identifiers, for the purpose of serving personalized ads.</p>
+    <p><strong>iOS — App Tracking Transparency (ATT):</strong> On devices running iOS 14.5
+    or later, the App will request permission to track advertising activity before displaying
+    ads. You may decline — the App will continue to function normally, showing only
+    non-personalized ads.</p>
     <p>More information: <a href="https://policies.google.com/privacy" target="_blank">
     Google Privacy Policy</a></p>
-    <p>You can opt out of personalized ads in your device settings:<br>
-    <em>Settings → Google → Ads → Opt out of Ads Personalization</em></p>
+    <p>You can opt out of personalized ads:<br>
+    <em>Android: Settings → Google → Ads → Opt out of Ads Personalization</em><br>
+    <em>iOS: Settings → Privacy → Apple Advertising → Limit Ad Tracking</em></p>
 
-    <h2>5. Speech Recognition Services</h2>
-    <p>The voice dictation feature uses the Android system's built-in speech recognition
-    engine (Google Speech Recognition). Speech processing is governed by Google's privacy
-    policy. The developer has no access to recordings or speech recognition results.</p>
+    <h2>5. "Secrets" Section — Local Encryption</h2>
+    <div class="warning">
+      <strong>Important:</strong> Data in the "Secrets" section is encrypted locally only.
+      The developer has no access to it and cannot recover it if you lose your PIN.
+    </div>
+    <ul>
+      <li>Passwords, login credentials and private notes in the "Secrets" section are
+        encrypted using <strong>AES-256</strong> directly on the device.</li>
+      <li>The encryption key is derived from the user's PIN using PBKDF2-HMAC-SHA256 —
+        it is never transmitted or stored in plain form.</li>
+      <li>Encrypted data is stored in the local Hive database or the system keystore
+        (Android Keystore / iOS Keychain).</li>
+      <li>Data from the "Secrets" section <strong>never leaves your device</strong>.</li>
+      <li>Losing your PIN means permanent, irreversible loss of access to encrypted data.</li>
+    </ul>
 
-    <h2>6. Children</h2>
+    <h2>6. Firebase Crashlytics — Crash Reporting</h2>
+    <p>The App uses <strong>Google Firebase Crashlytics</strong> to automatically detect
+    and report technical errors.</p>
+    <p>In the event of a crash, the following is sent:</p>
+    <ul>
+      <li>Anonymous stack trace (error path in code)</li>
+      <li>Device model and operating system version</li>
+      <li>App version</li>
+    </ul>
+    <p><strong>Not sent:</strong> note contents, passwords, Secrets section data,
+    personal data, names or any user-identifying information.</p>
+    <p>Crash reporting is <strong>automatically disabled</strong> when Developer Mode is
+    enabled in the App (Settings → tap the version number repeatedly).</p>
+    <p>Data is sent to Google and governed by the
+    <a href="https://firebase.google.com/support/privacy" target="_blank">
+    Firebase Privacy Policy</a>.</p>
+
+    <h2>7. Speech Recognition and Text-to-Speech</h2>
+    <p>The voice dictation feature uses the system speech recognition engine
+    (Android: Google Speech Recognition; iOS: Apple Speech Recognition).
+    Speech processing is governed by the respective provider's privacy policy.
+    The developer has no access to recordings or recognition results.</p>
+    <p>The read-aloud feature (Text-to-Speech) uses the device's built-in TTS engine.
+    Note contents are not sent outside the device for speech synthesis.</p>
+
+    <h2>8. Public Holiday Data</h2>
+    <p>The optional public holiday notifications feature fetches data from the public
+    <strong>Nager.Date</strong> API (<a href="https://date.nager.at" target="_blank">date.nager.at</a>).
+    The request contains only the selected country code and year. No personal data is
+    transmitted. If internet access is unavailable, the App uses a built-in list of
+    Polish public holidays.</p>
+
+    <h2>9. Children</h2>
     <p>The App is not directed at children under the age of 13 and does not knowingly
     collect data from such users.</p>
 
-    <h2>7. Changes to This Policy</h2>
-    <p>Any changes will be published on this page. The date of the last update
-    is shown below.</p>
+    <h2>10. Changes to This Policy</h2>
+    <p>Any changes will be published on this page. The date of the last update is shown
+    below. Continued use of the App after changes are made constitutes acceptance of
+    those changes.</p>
 
-    <h2>8. Contact</h2>
+    <h2>11. Contact</h2>
     <p>For privacy-related questions: <a href="mailto:b_lukasz.1994@wp.pl">b_lukasz.1994@wp.pl</a></p>
 
     <p class="updated">Last updated: May 2026</p>
@@ -178,11 +302,11 @@
 </div>
 
 <script>
-  function setLang(lang) {
+  function setLang(lang, btn) {
     document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
     document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
     document.getElementById(lang).classList.add('active');
-    event.target.classList.add('active');
+    btn.classList.add('active');
   }
 </script>
 </body>
