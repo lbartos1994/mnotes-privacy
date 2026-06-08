@@ -50,9 +50,9 @@
   <section id="pl" class="active">
     <div class="highlight">
       <strong>Krótko mówiąc:</strong> mNotes nie zbiera żadnych Twoich danych osobowych.
-      Wszystkie notatki, listy, treningi i ustawienia są przechowywane wyłącznie lokalnie
-      na Twoim urządzeniu. Jedyne dane wysyłane poza urządzenie to anonimowe raporty
-      o błędach (Firebase Crashlytics) oraz dane reklamowe (Google AdMob).
+      Wszystkie notatki, listy, treningi, lokalizacje i ustawienia są przechowywane
+      wyłącznie lokalnie na Twoim urządzeniu. Jedyne dane wysyłane poza urządzenie to
+      anonimowe raporty o błędach (Firebase Crashlytics) oraz dane reklamowe (Google AdMob).
     </div>
 
     <h2>1. Informacje ogólne</h2>
@@ -69,6 +69,12 @@
       <li>Ustawienia przypomnień (data, godzina, cykl, roczne daty)</li>
       <li>Preferencje interfejsu (motyw, język, układ widoku)</li>
       <li>Zaszyfrowane dane z sekcji „Sekrety" (patrz sekcja 5)</li>
+      <li><strong>Dane lokalizacji</strong> — opcjonalnie, w ramach funkcji „Notatka z lokalizacją":
+        współrzędne GPS (szerokość i długość geograficzna) oraz adres uzyskany przez
+        odwrotne geokodowanie. Dane są przechowywane wyłącznie lokalnie w notatce
+        i <strong>nigdy nie są wysyłane na serwery dewelopera</strong>.
+        Odwrotne geokodowanie (zamiana współrzędnych na adres) jest realizowane
+        przez wbudowany system operacyjny urządzenia (Android Geocoder / Apple CLGeocoder).</li>
     </ul>
     <p>Żadne z powyższych danych <strong>nie są wysyłane na serwery dewelopera</strong>
     ani nie są udostępniane osobom trzecim przez dewelopera.</p>
@@ -93,6 +99,12 @@
         z systemowego API biometrycznego (Android BiometricPrompt / Apple LocalAuthentication).
         Dane biometryczne <strong>nigdy nie są przez aplikację przechowywane ani
         przetwarzane</strong>.</li>
+      <li><strong>Lokalizacja (dokładna i przybliżona)</strong> — używana wyłącznie
+        w ramach funkcji „Notatka z lokalizacją", na wyraźne żądanie użytkownika
+        (naciśnięcie przycisku „Pobierz GPS"). Współrzędne GPS są zapisywane lokalnie
+        w notatce. Aplikacja <strong>nie śledzi lokalizacji w tle</strong> ani bez
+        zgody użytkownika. Uprawnienie jest opcjonalne — funkcja notatek z lokalizacją
+        może być wyłączona w Ustawieniach aplikacji.</li>
     </ul>
 
     <h2>4. Reklamy – Google AdMob</h2>
@@ -170,14 +182,14 @@
     <h2>11. Kontakt</h2>
     <p>W razie pytań dotyczących prywatności: <a href="mailto:b_lukasz.1994@wp.pl">b_lukasz.1994@wp.pl</a></p>
 
-    <p class="updated">Ostatnia aktualizacja: maj 2026</p>
+    <p class="updated">Ostatnia aktualizacja: czerwiec 2026</p>
   </section>
 
   <!-- ═══════════════════════════ ENGLISH ══════════════════════════ -->
   <section id="en">
     <div class="highlight">
       <strong>In short:</strong> mNotes does not collect any of your personal data.
-      All notes, lists, workouts and settings are stored exclusively on your device.
+      All notes, lists, workouts, locations and settings are stored exclusively on your device.
       The only data sent outside the device is anonymous crash reports (Firebase Crashlytics)
       and advertising data (Google AdMob).
     </div>
@@ -196,6 +208,11 @@
       <li>Reminder settings (date, time, recurrence, annual dates)</li>
       <li>UI preferences (theme, language, view layout)</li>
       <li>Encrypted data from the "Secrets" section (see section 5)</li>
+      <li><strong>Location data</strong> — optionally, as part of the "Note with location" feature:
+        GPS coordinates (latitude and longitude) and an address obtained by reverse geocoding.
+        Data is stored locally in the note only and <strong>is never sent to the developer's
+        servers</strong>. Reverse geocoding (converting coordinates to an address) is performed
+        by the device's built-in operating system (Android Geocoder / Apple CLGeocoder).</li>
     </ul>
     <p>None of the above data is <strong>sent to the developer's servers</strong>
     or shared with third parties by the developer.</p>
@@ -219,6 +236,12 @@
         access to the "Secrets" section. The App uses only the system biometric API
         (Android BiometricPrompt / Apple LocalAuthentication).
         Biometric data is <strong>never stored or processed by the App</strong>.</li>
+      <li><strong>Location (precise and approximate)</strong> — used solely as part of the
+        "Note with location" feature, at the user's explicit request (tapping the "Get GPS"
+        button). GPS coordinates are saved locally in the note.
+        The App <strong>does not track location in the background</strong> or without user
+        consent. This permission is optional — the location notes feature can be disabled
+        in the App's Settings.</li>
     </ul>
 
     <h2>4. Advertising – Google AdMob</h2>
@@ -295,7 +318,7 @@
     <h2>11. Contact</h2>
     <p>For privacy-related questions: <a href="mailto:b_lukasz.1994@wp.pl">b_lukasz.1994@wp.pl</a></p>
 
-    <p class="updated">Last updated: May 2026</p>
+    <p class="updated">Last updated: June 2026</p>
   </section>
 
   <footer>mNotes &copy; 2026 Łukasz Bartos</footer>
