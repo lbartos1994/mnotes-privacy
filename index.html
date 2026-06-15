@@ -50,7 +50,7 @@
   <section id="pl" class="active">
     <div class="highlight">
       <strong>Krótko mówiąc:</strong> mNotes nie zbiera żadnych Twoich danych osobowych.
-      Wszystkie notatki, listy, treningi, lokalizacje i ustawienia są przechowywane
+      Wszystkie notatki, listy, treningi, lokalizacje, zdjęcia i ustawienia są przechowywane
       wyłącznie lokalnie na Twoim urządzeniu. Jedyne dane wysyłane poza urządzenie to
       anonimowe raporty o błędach (Firebase Crashlytics) oraz dane reklamowe (Google AdMob).
     </div>
@@ -68,6 +68,7 @@
       <li>Dane treningowe (szablony ćwiczeń, sesje treningowe, statystyki)</li>
       <li>Ustawienia przypomnień (data, godzina, cykl, roczne daty)</li>
       <li>Preferencje interfejsu (motyw, język, układ widoku)</li>
+      <li>Zdjęcia dołączone do notatek (przechowywane lokalnie w prywatnym katalogu aplikacji)</li>
       <li>Zaszyfrowane dane z sekcji „Sekrety" (patrz sekcja 5)</li>
       <li><strong>Dane lokalizacji</strong> — opcjonalnie, w ramach funkcji „Notatka z lokalizacją":
         współrzędne GPS (szerokość i długość geograficzna) oraz adres uzyskany przez
@@ -105,6 +106,11 @@
         w notatce. Aplikacja <strong>nie śledzi lokalizacji w tle</strong> ani bez
         zgody użytkownika. Uprawnienie jest opcjonalne — funkcja notatek z lokalizacją
         może być wyłączona w Ustawieniach aplikacji.</li>
+      <li><strong>Aparat i galeria zdjęć</strong> — używane wyłącznie na Twoje żądanie,
+        gdy dodajesz zdjęcie do notatki (np. zrzut ekranu, zdjęcie dokumentu).
+        Zdjęcia są kopiowane do prywatnego katalogu aplikacji na urządzeniu i
+        <strong>nigdy nie są wysyłane poza urządzenie</strong>. Usunięcie notatki lub
+        zdjęcia trwale usuwa powiązany plik z pamięci urządzenia.</li>
     </ul>
 
     <h2>4. Reklamy – Google AdMob</h2>
@@ -189,9 +195,9 @@
   <section id="en">
     <div class="highlight">
       <strong>In short:</strong> mNotes does not collect any of your personal data.
-      All notes, lists, workouts, locations and settings are stored exclusively on your device.
-      The only data sent outside the device is anonymous crash reports (Firebase Crashlytics)
-      and advertising data (Google AdMob).
+      All notes, lists, workouts, locations, photos and settings are stored exclusively
+      on your device. The only data sent outside the device is anonymous crash reports
+      (Firebase Crashlytics) and advertising data (Google AdMob).
     </div>
 
     <h2>1. General Information</h2>
@@ -207,6 +213,7 @@
       <li>Workout data (exercise templates, training sessions, statistics)</li>
       <li>Reminder settings (date, time, recurrence, annual dates)</li>
       <li>UI preferences (theme, language, view layout)</li>
+      <li>Photos attached to notes (stored locally in the App's private storage)</li>
       <li>Encrypted data from the "Secrets" section (see section 5)</li>
       <li><strong>Location data</strong> — optionally, as part of the "Note with location" feature:
         GPS coordinates (latitude and longitude) and an address obtained by reverse geocoding.
@@ -242,6 +249,11 @@
         The App <strong>does not track location in the background</strong> or without user
         consent. This permission is optional — the location notes feature can be disabled
         in the App's Settings.</li>
+      <li><strong>Camera and Photo Library</strong> — used only at your request, when
+        you add a photo to a note (e.g. a screenshot or a photo of a document).
+        Photos are copied into the App's private storage on your device and
+        <strong>are never sent outside the device</strong>. Deleting a note or photo
+        permanently removes the corresponding file from device storage.</li>
     </ul>
 
     <h2>4. Advertising – Google AdMob</h2>
