@@ -65,10 +65,22 @@
     <p>Aplikacja przechowuje na Twoim urządzeniu wyłącznie:</p>
     <ul>
       <li>Treść notatek (tytuł, tekst, checklisty, listy zakupów, daty urodzin/imienin, listy TODO)</li>
-      <li>Dane treningowe (szablony ćwiczeń, sesje treningowe, statystyki)</li>
+      <li>Dane treningowe (szablony ćwiczeń, sesje treningowe, pomiary ciała, statystyki)</li>
+      <li><strong>Dane dotyczące zdrowia</strong> — patrz osobna sekcja 6</li>
+      <li>Dane pojazdów w sekcji „Garaż" (marka, model, rok, numer rejestracyjny, VIN,
+        terminy przeglądu i ubezpieczenia, historia serwisowa, zdjęcia i skany dokumentów)</li>
+      <li>Dane finansowe w sekcji „Wydatki" (miesięczne zestawienia, nazwy i kwoty
+        pozycji, kategorie) — wyłącznie wpisywane ręcznie, bez połączenia z bankiem
+        ani jakimkolwiek zewnętrznym źródłem</li>
+      <li>Fiszki (talie, pytania i odpowiedzi, postęp powtórek)</li>
+      <li>Wydarzenia i wyjazdy z kalendarza wydarzeń (nazwa, daty, opis, budżet)</li>
       <li>Ustawienia przypomnień (data, godzina, cykl, roczne daty)</li>
       <li>Preferencje interfejsu (motyw, język, układ widoku)</li>
       <li>Zdjęcia dołączone do notatek (przechowywane lokalnie w prywatnym katalogu aplikacji)</li>
+      <li><strong>Wspomnienia</strong> — nazwy albumów i folderów, daty, opisy i miejsca,
+        a także <strong>miniatury oraz odniesienia</strong> do zdjęć i filmów z galerii
+        urządzenia. Oryginalne pliki pozostają w galerii i <strong>nie są przez aplikację
+        kopiowane, przenoszone ani usuwane</strong> (patrz sekcja 3)</li>
       <li>Zaszyfrowane dane z sekcji „Sekrety" (patrz sekcja 5)</li>
       <li><strong>Dane lokalizacji</strong> — opcjonalnie, w ramach funkcji „Notatka z lokalizacją":
         współrzędne GPS (szerokość i długość geograficzna) oraz adres uzyskany przez
@@ -76,6 +88,19 @@
         i <strong>nigdy nie są wysyłane na serwery dewelopera</strong>.
         Odwrotne geokodowanie (zamiana współrzędnych na adres) jest realizowane
         przez wbudowany system operacyjny urządzenia (Android Geocoder / Apple CLGeocoder).</li>
+      <li><strong>Kopia zapasowa (backup)</strong> — na życzenie możesz wyeksportować plik .zip
+        zawierający kopię wszystkich powyższych danych (notatki, kategorie, ustawienia,
+        zaszyfrowane sekrety, zdjęcia, <strong>dane dotyczące zdrowia i kalendarza
+        cyklu</strong>) i wysłać go w wybrane przez siebie miejsce
+        (np. e-mail, dysk w chmurze) za pomocą systemowego okna udostępniania —
+        decyzja o miejscu zapisu należy wyłącznie do Ciebie. Aplikacja tworzy też
+        automatycznie lokalną kopię zapasową raz w tygodniu, przechowywaną wyłącznie
+        w prywatnym katalogu aplikacji na urządzeniu i <strong>nigdy nie wysyłaną
+        poza urządzenie</strong>.
+        <br>Jeśli wybierzesz opcję dołączenia multimediów, kopia zapasowa zawiera
+        <strong>oryginalne pliki zdjęć i filmów</strong> użytych we Wspomnieniach —
+        plik .zip nie jest zabezpieczony hasłem, więc miejsce jego przechowywania
+        wybierasz i zabezpieczasz samodzielnie.</li>
     </ul>
     <p>Żadne z powyższych danych <strong>nie są wysyłane na serwery dewelopera</strong>
     ani nie są udostępniane osobom trzecim przez dewelopera.</p>
@@ -111,6 +136,21 @@
         Zdjęcia są kopiowane do prywatnego katalogu aplikacji na urządzeniu i
         <strong>nigdy nie są wysyłane poza urządzenie</strong>. Usunięcie notatki lub
         zdjęcia trwale usuwa powiązany plik z pamięci urządzenia.</li>
+      <li><strong>Dostęp do zdjęć i filmów w galerii</strong>
+        (<code>READ_MEDIA_IMAGES</code>, <code>READ_MEDIA_VIDEO</code> na Androidzie) —
+        wymagany przez sekcję <strong>„Wspomnienia"</strong>, która pozwala budować
+        albumy z multimediów już znajdujących się na Twoim urządzeniu. Aplikacja
+        <strong>odczytuje</strong> wskazane przez Ciebie zdjęcia i filmy, a u siebie
+        zapisuje wyłącznie <strong>miniatury oraz odniesienia</strong> do plików —
+        oryginały pozostają w galerii i aplikacja ich <strong>nigdy nie usuwa,
+        nie przenosi ani nie modyfikuje</strong>. Nic nie jest wysyłane poza
+        urządzenie. Uprawnienie jest opcjonalne: bez niego działa cała aplikacja
+        poza sekcją „Wspomnienia".
+        <br><em>Dlaczego nie wystarcza systemowy wybór zdjęć:</em> trwałe uprawnienia
+        do pojedynczych plików są w Androidzie ograniczone do 128 pozycji (Android 10
+        i starsze) oraz 512 pozycji (Android 11 i nowsze), a pojedynczy album z wyjazdu
+        potrafi mieć setki zdjęć — po kilku wspomnieniach aplikacja utraciłaby dostęp
+        do wcześniej dodanych multimediów.</li>
     </ul>
 
     <h2>4. Reklamy – Google AdMob</h2>
@@ -144,7 +184,49 @@
       <li>Utrata PINu oznacza trwałą, nieodwracalną utratę dostępu do zaszyfrowanych danych.</li>
     </ul>
 
-    <h2>6. Firebase Crashlytics — raporty o błędach</h2>
+    <h2>6. Dane dotyczące zdrowia</h2>
+    <p>Aplikacja pozwala prowadzić prywatny dziennik zdrowia. Są to
+    <strong>dane wrażliwe</strong>, dlatego opisujemy je osobno.</p>
+    <p>W sekcji „Zdrowie" możesz zapisać:</p>
+    <ul>
+      <li>wizyty lekarskie — rodzaj specjalisty, placówkę, powód wizyty, przebieg
+        i wnioski, zalecenia, koszt oraz <strong>zdjęcia i skany</strong>
+        (np. skierowań, wyników);</li>
+      <li>choroby i rozpoznania wraz ze statusem i datami;</li>
+      <li>leki — nazwę, dawkowanie, pory przyjmowania i notatki;</li>
+      <li>dzienne samopoczucie wraz z objawami;</li>
+      <li>badania — rodzaj, laboratorium, poszczególne parametry z wynikami,
+        jednostkami i zakresami norm, notatki oraz zdjęcia i skany wyników.</li>
+    </ul>
+    <p>W sekcji „Kalendarz cyklu" możesz zapisać dane dotyczące cyklu
+    menstruacyjnego — daty miesiączek, objawy i samopoczucie. Aplikacja wylicza
+    z nich przewidywane dni płodne i owulację. Obliczenia wykonywane są
+    <strong>wyłącznie na urządzeniu</strong>.</p>
+    <p><strong>Wszystkie powyższe dane są przechowywane wyłącznie lokalnie</strong>
+    w pamięci Twojego urządzenia i <strong>nigdy nie są wysyłane na serwery
+    dewelopera ani udostępniane osobom trzecim</strong>. Nie są wykorzystywane
+    do personalizacji reklam. Nie są też przekazywane do Google Fit, Health
+    Connect ani żadnej innej usługi zdrowotnej — aplikacja nie integruje się
+    z takimi usługami.</p>
+    <p><strong>Dane dotyczące zdrowia nie są szyfrowane</strong> (w odróżnieniu od
+    sekcji „Sekrety"). Chroni je zabezpieczenie samego urządzenia — blokada
+    ekranu i izolacja katalogu prywatnego aplikacji przez system operacyjny.
+    Jeśli zapisujesz szczególnie wrażliwe informacje, zadbaj o blokadę ekranu.</p>
+    <p><strong>Kopia zapasowa.</strong> Jeśli wykonasz eksport kopii zapasowej,
+    dane dotyczące zdrowia i cyklu <strong>znajdą się w pliku .zip</strong>,
+    wraz ze zdjęciami i skanami. Plik ten wysyłasz samodzielnie przez systemowe
+    okno udostępniania — od tego momentu za jego bezpieczeństwo odpowiadasz Ty.
+    Kopia <strong>nie jest zaszyfrowana hasłem</strong>, więc nie zalecamy
+    wysyłania jej kanałami, którym nie ufasz.</p>
+    <p><strong>Usunięcie danych.</strong> Każdy wpis możesz usunąć pojedynczo
+    w aplikacji. Odinstalowanie aplikacji trwale usuwa wszystkie dane zdrowotne
+    z urządzenia — deweloper nie posiada ich kopii i nie jest w stanie ich
+    odtworzyć.</p>
+    <p><strong>Zastrzeżenie.</strong> mNotes jest narzędziem do prowadzenia
+    notatek. Nie jest wyrobem medycznym, nie stawia diagnoz i nie zastępuje
+    kontaktu z lekarzem.</p>
+
+    <h2>7. Firebase Crashlytics — raporty o błędach</h2>
     <p>Aplikacja korzysta z usługi <strong>Google Firebase Crashlytics</strong>
     w celu automatycznego wykrywania i raportowania błędów technicznych.</p>
     <p>W przypadku awarii aplikacji wysyłane są:</p>
@@ -161,7 +243,7 @@
     <a href="https://firebase.google.com/support/privacy" target="_blank">
     Polityce Prywatności Firebase</a>.</p>
 
-    <h2>7. Usługi rozpoznawania i syntezy mowy</h2>
+    <h2>8. Usługi rozpoznawania i syntezy mowy</h2>
     <p>Funkcja dyktowania głosowego korzysta z systemowego silnika rozpoznawania mowy
     (Android: Google Speech Recognition; iOS: Apple Speech Recognition).
     Przetwarzanie mowy odbywa się zgodnie z polityką prywatności odpowiedniego dostawcy.
@@ -169,26 +251,26 @@
     <p>Funkcja odczytu notatek głosem (Text-to-Speech) korzysta z systemowego silnika TTS
     urządzenia. Treść notatek nie jest wysyłana poza urządzenie w celu syntezy mowy.</p>
 
-    <h2>8. Pobieranie danych o świętach</h2>
+    <h2>9. Pobieranie danych o świętach</h2>
     <p>Opcjonalna funkcja powiadomień o świętach państwowych pobiera dane z publicznego
     API <strong>Nager.Date</strong> (<a href="https://date.nager.at" target="_blank">date.nager.at</a>).
     Zapytanie zawiera jedynie wybrany kod kraju i rok. Żadne dane osobowe nie są
     przesyłane. W przypadku braku dostępu do internetu aplikacja korzysta z wbudowanej
     listy polskich świąt.</p>
 
-    <h2>9. Dzieci</h2>
+    <h2>10. Dzieci</h2>
     <p>Aplikacja nie jest skierowana do dzieci poniżej 13. roku życia i świadomie
     nie zbiera danych od takich użytkowników.</p>
 
-    <h2>10. Zmiany w polityce prywatności</h2>
+    <h2>11. Zmiany w polityce prywatności</h2>
     <p>Wszelkie zmiany zostaną opublikowane na tej stronie. Data ostatniej aktualizacji
     jest podana poniżej. Kontynuowanie korzystania z aplikacji po wprowadzeniu zmian
     oznacza ich akceptację.</p>
 
-    <h2>11. Kontakt</h2>
+    <h2>12. Kontakt</h2>
     <p>W razie pytań dotyczących prywatności: <a href="mailto:b_lukasz.1994@wp.pl">b_lukasz.1994@wp.pl</a></p>
 
-    <p class="updated">Ostatnia aktualizacja: czerwiec 2026</p>
+    <p class="updated">Ostatnia aktualizacja: sierpień 2026</p>
   </section>
 
   <!-- ═══════════════════════════ ENGLISH ══════════════════════════ -->
@@ -210,16 +292,37 @@
     <p>The App stores only the following data on your device:</p>
     <ul>
       <li>Note contents (title, text, checklists, shopping lists, birthday/name day entries, numbered TODO lists)</li>
-      <li>Workout data (exercise templates, training sessions, statistics)</li>
+      <li>Workout data (exercise templates, training sessions, body measurements, statistics)</li>
+      <li><strong>Health-related data</strong> — see the separate section 6</li>
+      <li>Vehicle data in the "Garage" section (make, model, year, registration number, VIN,
+        inspection and insurance dates, service history, photos and document scans)</li>
+      <li>Financial data in the "Expenses" section (monthly summaries, item names and amounts,
+        categories) — entered manually only, with no connection to a bank or any other
+        external source</li>
+      <li>Flashcards (decks, questions and answers, review progress)</li>
+      <li>Events and trips from the events calendar (name, dates, description, budget)</li>
       <li>Reminder settings (date, time, recurrence, annual dates)</li>
       <li>UI preferences (theme, language, view layout)</li>
       <li>Photos attached to notes (stored locally in the App's private storage)</li>
+      <li><strong>Memories</strong> — album and folder names, dates, descriptions and places,
+        together with <strong>thumbnails and references</strong> to photos and videos in your
+        device gallery. The original files stay in the gallery and are <strong>never copied,
+        moved or deleted by the App</strong> (see section 3)</li>
       <li>Encrypted data from the "Secrets" section (see section 5)</li>
       <li><strong>Location data</strong> — optionally, as part of the "Note with location" feature:
         GPS coordinates (latitude and longitude) and an address obtained by reverse geocoding.
         Data is stored locally in the note only and <strong>is never sent to the developer's
         servers</strong>. Reverse geocoding (converting coordinates to an address) is performed
         by the device's built-in operating system (Android Geocoder / Apple CLGeocoder).</li>
+      <li><strong>Backup</strong> — on request, you can export a .zip file containing a copy
+        of all the data listed above (notes, categories, settings, encrypted secrets, photos,
+        <strong>health-related and cycle data</strong>) and send it anywhere you choose (e.g. email, cloud storage) via the system share
+        dialog — the destination is entirely up to you. The App also automatically creates
+        a local backup once a week, stored only in the App's private storage on your device
+        and <strong>never sent outside the device</strong>.
+        <br>If you choose to include media, the backup contains the <strong>original photo
+        and video files</strong> used in Memories — the .zip file is not password-protected,
+        so where you store it and how you secure it is entirely up to you.</li>
     </ul>
     <p>None of the above data is <strong>sent to the developer's servers</strong>
     or shared with third parties by the developer.</p>
@@ -254,6 +357,20 @@
         Photos are copied into the App's private storage on your device and
         <strong>are never sent outside the device</strong>. Deleting a note or photo
         permanently removes the corresponding file from device storage.</li>
+      <li><strong>Access to photos and videos in your gallery</strong>
+        (<code>READ_MEDIA_IMAGES</code>, <code>READ_MEDIA_VIDEO</code> on Android) —
+        required by the <strong>"Memories"</strong> section, which lets you build
+        albums from media already present on your device. The App <strong>reads</strong>
+        the photos and videos you select and stores only <strong>thumbnails and
+        references</strong> to those files — the originals stay in your gallery and the
+        App <strong>never deletes, moves or modifies them</strong>. Nothing is sent
+        outside the device. The permission is optional: without it the entire App works
+        except the "Memories" section.
+        <br><em>Why the system photo picker is not sufficient:</em> persistent
+        permissions for individual files are capped by Android at 128 items (Android 10
+        and older) and 512 items (Android 11 and newer), while a single holiday album
+        can contain hundreds of photos — after a few memories the App would lose access
+        to previously added media.</li>
     </ul>
 
     <h2>4. Advertising – Google AdMob</h2>
@@ -286,7 +403,44 @@
       <li>Losing your PIN means permanent, irreversible loss of access to encrypted data.</li>
     </ul>
 
-    <h2>6. Firebase Crashlytics — Crash Reporting</h2>
+    <h2>6. Health-Related Data</h2>
+    <p>The App lets you keep a private health journal. This is
+    <strong>sensitive data</strong>, so we describe it separately.</p>
+    <p>In the "Health" section you can record:</p>
+    <ul>
+      <li>doctor visits — type of specialist, facility, reason for the visit, findings
+        and conclusions, recommendations, cost, and <strong>photos and scans</strong>
+        (e.g. referrals, results);</li>
+      <li>conditions and diagnoses with status and dates;</li>
+      <li>medications — name, dosage, times of day and notes;</li>
+      <li>daily wellbeing along with symptoms;</li>
+      <li>medical tests — type, laboratory, individual parameters with results, units
+        and reference ranges, notes, plus photos and scans of the results.</li>
+    </ul>
+    <p>In the "Cycle calendar" section you can record menstrual cycle data — period
+    dates, symptoms and wellbeing. The App uses them to estimate fertile days and
+    ovulation. All calculations are performed <strong>on your device only</strong>.</p>
+    <p><strong>All of the above is stored locally</strong> on your device and
+    <strong>is never sent to the developer's servers or shared with third
+    parties</strong>. It is not used for ad personalisation. It is also not shared
+    with Google Fit, Health Connect or any other health service — the App does not
+    integrate with such services.</p>
+    <p><strong>Health-related data is not encrypted</strong> (unlike the "Secrets"
+    section). It is protected by your device's own security — the screen lock and the
+    operating system's isolation of the App's private storage. If you record
+    particularly sensitive information, please make sure your screen lock is enabled.</p>
+    <p><strong>Backup.</strong> If you export a backup, health and cycle data
+    <strong>will be included in the .zip file</strong>, together with photos and scans.
+    You send that file yourself via the system share dialog — from that moment its
+    security is your responsibility. The backup is <strong>not password-protected</strong>,
+    so we do not recommend sending it over channels you do not trust.</p>
+    <p><strong>Deleting data.</strong> You can delete any entry individually within the
+    App. Uninstalling the App permanently removes all health data from the device — the
+    developer holds no copy and cannot restore it.</p>
+    <p><strong>Disclaimer.</strong> mNotes is a note-taking tool. It is not a medical
+    device, it does not provide diagnoses, and it does not replace consulting a doctor.</p>
+
+    <h2>7. Firebase Crashlytics — Crash Reporting</h2>
     <p>The App uses <strong>Google Firebase Crashlytics</strong> to automatically detect
     and report technical errors.</p>
     <p>In the event of a crash, the following is sent:</p>
@@ -303,7 +457,7 @@
     <a href="https://firebase.google.com/support/privacy" target="_blank">
     Firebase Privacy Policy</a>.</p>
 
-    <h2>7. Speech Recognition and Text-to-Speech</h2>
+    <h2>8. Speech Recognition and Text-to-Speech</h2>
     <p>The voice dictation feature uses the system speech recognition engine
     (Android: Google Speech Recognition; iOS: Apple Speech Recognition).
     Speech processing is governed by the respective provider's privacy policy.
@@ -311,26 +465,26 @@
     <p>The read-aloud feature (Text-to-Speech) uses the device's built-in TTS engine.
     Note contents are not sent outside the device for speech synthesis.</p>
 
-    <h2>8. Public Holiday Data</h2>
+    <h2>9. Public Holiday Data</h2>
     <p>The optional public holiday notifications feature fetches data from the public
     <strong>Nager.Date</strong> API (<a href="https://date.nager.at" target="_blank">date.nager.at</a>).
     The request contains only the selected country code and year. No personal data is
     transmitted. If internet access is unavailable, the App uses a built-in list of
     Polish public holidays.</p>
 
-    <h2>9. Children</h2>
+    <h2>10. Children</h2>
     <p>The App is not directed at children under the age of 13 and does not knowingly
     collect data from such users.</p>
 
-    <h2>10. Changes to This Policy</h2>
+    <h2>11. Changes to This Policy</h2>
     <p>Any changes will be published on this page. The date of the last update is shown
     below. Continued use of the App after changes are made constitutes acceptance of
     those changes.</p>
 
-    <h2>11. Contact</h2>
+    <h2>12. Contact</h2>
     <p>For privacy-related questions: <a href="mailto:b_lukasz.1994@wp.pl">b_lukasz.1994@wp.pl</a></p>
 
-    <p class="updated">Last updated: June 2026</p>
+    <p class="updated">Last updated: August 2026</p>
   </section>
 
   <footer>mNotes &copy; 2026 Łukasz Bartos</footer>
